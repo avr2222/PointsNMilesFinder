@@ -49,7 +49,11 @@ export function DealRow({ deal }: Props) {
       <td className="py-3 px-3 text-right">
         <span className="text-sm font-bold text-gray-800 tabular-nums">{formatPoints(deal.amex_points_needed)}</span>
         {deal.amex_transfer_ratio !== 1 && (
-          <p className="text-[10px] text-gray-400">({deal.amex_transfer_ratio}:1 ratio)</p>
+          <p className="text-[10px] text-gray-400">
+            {deal.amex_transfer_ratio < 1
+              ? `(1:${Math.round(1 / deal.amex_transfer_ratio)} ratio)`
+              : `(${deal.amex_transfer_ratio}:1 ratio)`}
+          </p>
         )}
       </td>
 
