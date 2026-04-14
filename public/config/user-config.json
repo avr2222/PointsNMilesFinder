@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "alert_email": "your.email@example.com",
+  "min_value_threshold_inr": 1.5,
+  "preferred_origins": ["BLR", "DEL", "BOM"],
+  "preferred_destinations": ["SIN", "LHR", "DXB", "HKG", "CDG", "NRT"],
+  "preferred_routes": [
+    { "origin": "BLR", "destination": "SIN" },
+    { "origin": "DEL", "destination": "LHR" },
+    { "origin": "BLR", "destination": "LHR" }
+  ],
+  "preferred_partners": ["krisflyer", "ba-avios", "emirates", "etihad", "cathay"],
+  "preferred_categories": ["flight", "hotel"],
+  "preferred_cabin_classes": ["business", "first"],
+  "alert_on_transfer_bonus": true,
+  "display_currency": "INR"
+}
