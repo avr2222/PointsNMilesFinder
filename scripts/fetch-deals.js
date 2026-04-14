@@ -23,8 +23,6 @@ import { AirIndiaFlyingReturns }   from './sources/air-india.js'
 import { EmiratesSkywards }        from './sources/emirates.js'
 import { EtihadGuest }             from './sources/etihad.js'
 import { CathayPacificAsiaMiles }  from './sources/cathay.js'
-import { DeltaSkyMiles }           from './sources/delta.js'
-import { AirFranceKLMFlyingBlue }  from './sources/flying-blue.js'
 import { MarriottBonvoy }          from './sources/marriott.js'
 import { HiltonHonors }            from './sources/hilton.js'
 
@@ -78,7 +76,6 @@ async function main() {
   const SOURCES = [
     KrisFlyer, BritishAirwaysAvios, AirIndiaFlyingReturns,
     EmiratesSkywards, EtihadGuest, CathayPacificAsiaMiles,
-    DeltaSkyMiles, AirFranceKLMFlyingBlue,
     MarriottBonvoy, HiltonHonors,
   ]
 

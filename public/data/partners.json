@@ -103,40 +103,6 @@
       ]
     },
     {
-      "id": "delta",
-      "name": "Delta SkyMiles",
-      "category": "flight",
-      "region": "americas",
-      "logo_char": "DL",
-      "logo_color": "#003366",
-      "amex_transfer_ratio": "1:1",
-      "transfer_time": "instant",
-      "program_url": "https://www.delta.com/us/en/skymiles/overview",
-      "redemption_url": "https://www.delta.com/us/en/skymiles/redeem-miles",
-      "typical_sweet_spots": [
-        "ATL→LHR business (~75,000 miles)",
-        "JFK→CDG business (~70,000 miles)",
-        "ATL→NRT economy (~35,000 miles)"
-      ]
-    },
-    {
-      "id": "flying-blue",
-      "name": "Air France/KLM Flying Blue",
-      "category": "flight",
-      "region": "europe",
-      "logo_char": "FB",
-      "logo_color": "#0036A1",
-      "amex_transfer_ratio": "1:1",
-      "transfer_time": "instant",
-      "program_url": "https://flyingblue.com",
-      "redemption_url": "https://flyingblue.com/redeem-miles",
-      "typical_sweet_spots": [
-        "CDG→JFK business (~50,000 miles)",
-        "CDG→NRT business (~60,000 miles)",
-        "Monthly Promo Awards (30–50% off)"
-      ]
-    },
-    {
       "id": "marriott",
       "name": "Marriott Bonvoy",
       "category": "hotel",
