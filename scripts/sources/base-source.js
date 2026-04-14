@@ -17,11 +17,12 @@ export class BaseSource {
 
   /**
    * Build a fully-classified Deal object for a flight redemption.
+   * VPP is always calculated on Amex MR points (what the user actually spends).
    */
   makeFlightDeal({ origin, destination, cabin, points, cashInr, notes = '', transferRatio = 1, bonusActive = false, bonusPct = 0, region = 'asia', validWindow = null }) {
-    const routeSlug = `${origin}-${destination}-${cabin}`
-    const classified = classifyDeal(cashInr, points, this.exchangeRate)
+    const routeSlug  = `${origin}-${destination}-${cabin}`
     const amexPoints = Math.ceil(points * transferRatio)
+    const classified = classifyDeal(cashInr, amexPoints, this.exchangeRate) // ← Amex MR points
 
     return {
       id: makeId(this.partnerId, routeSlug),
@@ -53,11 +54,12 @@ export class BaseSource {
 
   /**
    * Build a fully-classified Deal object for a hotel redemption.
+   * VPP is always calculated on Amex MR points (what the user actually spends).
    */
   makeHotelDeal({ hotelName, city, hotelCategory, nights, points, cashInr, notes = '', transferRatio = 1, bonusActive = false, bonusPct = 0, region = 'asia', validWindow = null }) {
-    const routeSlug = `${city.toLowerCase().replace(/\s+/g, '-')}-${nights}n`
-    const classified = classifyDeal(cashInr, points, this.exchangeRate)
+    const routeSlug  = `${city.toLowerCase().replace(/\s+/g, '-')}-${nights}n`
     const amexPoints = Math.ceil(points * transferRatio)
+    const classified = classifyDeal(cashInr, amexPoints, this.exchangeRate) // ← Amex MR points
 
     return {
       id: makeId(this.partnerId, routeSlug),

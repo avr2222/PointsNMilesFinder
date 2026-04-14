@@ -1,13 +1,14 @@
 {
-  "timestamp": "2026-04-14T11:55:14.472Z",
-  "run_id": "seed-1776167714472",
+  "timestamp": "2026-04-14T11:59:39.315Z",
+  "run_id": "seed-1776167979315",
   "deals_count": 58,
-  "hot_deals_count": 39,
-  "good_deals_count": 13,
-  "skip_deals_count": 6,
+  "hot_deals_count": 42,
+  "good_deals_count": 12,
+  "skip_deals_count": 4,
   "new_hot_deals": [],
-  "exchange_rate_usd_inr": 83.5,
+  "exchange_rate_usd_inr": 93.33,
   "sources_attempted": 10,
   "sources_succeeded": 10,
-  "error_log": []
+  "error_log": [],
+  "exchange_rate_source": "live"
 }

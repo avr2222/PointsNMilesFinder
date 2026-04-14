@@ -10,6 +10,7 @@ import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { logger } from './utils/logger.js'
 
+import { fetchExchangeRate }        from './utils/exchange-rate.js'
 import { KrisFlyer }               from './sources/krisflyer.js'
 import { BritishAirwaysAvios }     from './sources/ba-avios.js'
 import { AirIndiaFlyingReturns }   from './sources/air-india.js'
@@ -24,8 +25,6 @@ import { HiltonHonors }            from './sources/hilton.js'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DATA_DIR  = join(__dirname, '..', 'public', 'data')
 
-const EXCHANGE_RATE = 83.5  // Hardcoded for seeding (no network call needed)
-
 const SOURCES = [
   KrisFlyer, BritishAirwaysAvios, AirIndiaFlyingReturns,
   EmiratesSkywards, EtihadGuest, CathayPacificAsiaMiles,
@@ -36,6 +35,7 @@ const SOURCES = [
 async function main() {
   if (!existsSync(DATA_DIR)) mkdirSync(DATA_DIR, { recursive: true })
 
+  const { rate: EXCHANGE_RATE } = await fetchExchangeRate(join(DATA_DIR, 'last-updated.json'))
   const config = { exchangeRate: EXCHANGE_RATE }
   const allDeals = []
 
@@ -85,6 +85,7 @@ async function main() {
     sources_attempted:     SOURCES.length,
     sources_succeeded:     SOURCES.length,
     error_log:             [],
+    exchange_rate_source:  'live',
   }
 
   writeFileSync(join(DATA_DIR, 'deals.json'),         JSON.stringify(dealsOutput, null, 2) + '\n')
