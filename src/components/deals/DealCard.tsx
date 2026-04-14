@@ -63,7 +63,7 @@ export function DealCard({ deal }: Props) {
 
       {/* Transfer bonus badge */}
       {deal.transfer_bonus_active && (
-        <div className="text-center text-[11px] font-semibold text-amber-700 bg-amber-50 rounded-md py-1">
+        <div className="text-center text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-md py-1">
           🎁 +{deal.transfer_bonus_percent}% Transfer Bonus Active!
         </div>
       )}

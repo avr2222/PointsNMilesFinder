@@ -32,9 +32,9 @@ export function FilterBar() {
         {isFiltered && (
           <button
             onClick={resetFilters}
-            className="ml-auto text-xs text-gray-400 hover:text-gray-700 underline"
+            className="ml-auto flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 underline"
           >
-            Clear all filters
+            <span aria-hidden="true">×</span> Clear all filters
           </button>
         )}
       </div>

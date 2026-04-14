@@ -4,7 +4,7 @@ import { DealCard } from '../deals/DealCard'
 export function BestDealsToday() {
   const deals = useDealsStore((s) => s.deals)
 
-  // Top 3 hot deals, sorted by value/pt desc
+  // Top 5 hot deals, sorted by value/pt desc
   const hotDeals = deals
     .filter((d) => d.rating === 'hot')
     .sort((a, b) => b.value_per_point_inr - a.value_per_point_inr)
@@ -20,10 +20,14 @@ export function BestDealsToday() {
           {hotDeals.length} hot
         </span>
       </div>
-      <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1">
-        {hotDeals.map((deal) => (
-          <DealCard key={deal.id} deal={deal} />
-        ))}
+      <div className="relative">
+        <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-thin">
+          {hotDeals.map((deal) => (
+            <DealCard key={deal.id} deal={deal} />
+          ))}
+        </div>
+        {/* Right-edge fade to hint at horizontal scroll */}
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-gray-50 to-transparent" />
       </div>
     </section>
   )

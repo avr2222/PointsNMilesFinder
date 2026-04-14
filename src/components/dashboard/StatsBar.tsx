@@ -1,13 +1,11 @@
-import { useDealsStore } from '../../store/dealsStore'
 import { useFilters } from '../../hooks/useFilters'
 
 export function StatsBar() {
-  const deals = useDealsStore((s) => s.deals)
   const { filteredDeals } = useFilters()
 
-  const hot  = deals.filter((d) => d.rating === 'hot').length
-  const good = deals.filter((d) => d.rating === 'good').length
-  const skip = deals.filter((d) => d.rating === 'skip').length
+  const hot  = filteredDeals.filter((d) => d.rating === 'hot').length
+  const good = filteredDeals.filter((d) => d.rating === 'good').length
+  const skip = filteredDeals.filter((d) => d.rating === 'skip').length
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

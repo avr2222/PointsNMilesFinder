@@ -2,7 +2,8 @@ import type { SortKey } from '../../types'
 import { useFilters } from '../../hooks/useFilters'
 
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
-  { key: 'value_per_point', label: 'Best Value' },
+  { key: 'value_per_point', label: 'Best Value (₹/pt)' },
+  { key: 'cash_value',      label: 'Est. Cash Value' },
   { key: 'points_required', label: 'Fewest Points' },
   { key: 'rating',          label: 'Rating' },
   { key: 'partner_name',    label: 'Partner A-Z' },

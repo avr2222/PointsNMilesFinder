@@ -60,7 +60,7 @@ export function DealRow({ deal }: Props) {
 
       {/* Value/pt */}
       <td className="py-3 px-3 text-right">
-        <span className={`text-sm font-bold tabular-nums ${deal.rating === 'hot' ? 'text-green-600' : deal.rating === 'good' ? 'text-blue-600' : 'text-gray-400'}`}>
+        <span className={`text-sm font-bold tabular-nums ${deal.rating !== 'skip' ? 'text-green-600' : 'text-gray-400'}`}>
           {formatVpp(deal.value_per_point_inr, deal.value_per_point_usd)}
         </span>
       </td>
@@ -70,7 +70,7 @@ export function DealRow({ deal }: Props) {
         <div className="flex items-center justify-end gap-1">
           <RatingBadge rating={deal.rating} size="sm" />
           {deal.transfer_bonus_active && (
-            <span className="text-[11px] font-semibold text-amber-600 bg-amber-50 rounded px-1.5 py-0.5">
+            <span className="text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5">
               🎁 Bonus
             </span>
           )}

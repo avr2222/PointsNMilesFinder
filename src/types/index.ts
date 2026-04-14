@@ -3,7 +3,7 @@ export type DealRegion = 'asia' | 'europe' | 'americas' | 'middle_east' | 'globa
 export type DealRating = 'hot' | 'good' | 'skip'
 export type CabinClass = 'economy' | 'business' | 'first'
 export type Currency = 'INR' | 'USD'
-export type SortKey = 'value_per_point' | 'points_required' | 'rating' | 'partner_name'
+export type SortKey = 'value_per_point' | 'cash_value' | 'points_required' | 'rating' | 'partner_name'
 export type SortDir = 'asc' | 'desc'
 export type DataSource = 'mock' | 'scraped' | 'manual'
 

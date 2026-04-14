@@ -147,6 +147,9 @@ export function applyFiltersAndSort(
       case 'value_per_point':
         cmp = a.value_per_point_inr - b.value_per_point_inr
         break
+      case 'cash_value':
+        cmp = a.cash_value_inr - b.cash_value_inr
+        break
       case 'points_required':
         cmp = a.amex_points_needed - b.amex_points_needed
         break
