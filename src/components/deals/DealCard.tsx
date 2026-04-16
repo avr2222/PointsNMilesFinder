@@ -3,6 +3,7 @@ import { RatingBadge } from '../shared/RatingBadge'
 import { useCurrency } from '../../hooks/useCurrency'
 import { formatPoints } from '../../utils/formatters'
 import { useDealsStore } from '../../store/dealsStore'
+import { buildBookingUrl } from '../../utils/bookingUrls'
 
 interface Props {
   deal: Deal
@@ -13,7 +14,8 @@ export function DealCard({ deal }: Props) {
   const partners = useDealsStore((s) => s.partners)
   const partner  = partners.find((p) => p.id === deal.partner_id)
 
-  const bgColor = partner?.logo_color ?? '#6b7280'
+  const bgColor    = partner?.logo_color ?? '#6b7280'
+  const bookingUrl = buildBookingUrl(deal, partner)
 
   return (
     <div className="card flex flex-col gap-3 min-w-[240px] max-w-[280px] hover:shadow-md transition-shadow">
@@ -43,6 +45,12 @@ export function DealCard({ deal }: Props) {
         {deal.nights && (
           <p className="text-xs text-gray-500">{deal.nights} nights · {deal.hotel_category}</p>
         )}
+        {/* Travel window */}
+        {deal.valid_travel_window && (
+          <p className="text-[11px] text-indigo-600 font-medium mt-0.5">
+            📅 {deal.valid_travel_window}
+          </p>
+        )}
       </div>
 
       {/* Key stats */}
@@ -67,6 +75,17 @@ export function DealCard({ deal }: Props) {
           🎁 +{deal.transfer_bonus_percent}% Transfer Bonus Active!
         </div>
       )}
+
+      {/* Book with Miles button */}
+      <a
+        href={bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-auto block text-center text-xs font-semibold text-white rounded-lg py-2 px-3 transition-opacity hover:opacity-90"
+        style={{ backgroundColor: bgColor }}
+      >
+        Book with Miles →
+      </a>
     </div>
   )
 }
