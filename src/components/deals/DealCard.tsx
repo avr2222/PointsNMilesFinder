@@ -3,7 +3,7 @@ import { RatingBadge } from '../shared/RatingBadge'
 import { useCurrency } from '../../hooks/useCurrency'
 import { formatPoints } from '../../utils/formatters'
 import { useDealsStore } from '../../store/dealsStore'
-import { buildBookingUrl } from '../../utils/bookingUrls'
+import { buildBookingUrl, getEffectiveBookingDate, formatBookingDate } from '../../utils/bookingUrls'
 
 interface Props {
   deal: Deal
@@ -14,8 +14,9 @@ export function DealCard({ deal }: Props) {
   const partners = useDealsStore((s) => s.partners)
   const partner  = partners.find((p) => p.id === deal.partner_id)
 
-  const bgColor    = partner?.logo_color ?? '#6b7280'
-  const bookingUrl = buildBookingUrl(deal, partner)
+  const bgColor       = partner?.logo_color ?? '#6b7280'
+  const bookingUrl    = buildBookingUrl(deal, partner)
+  const bookingDate   = getEffectiveBookingDate(deal)
 
   return (
     <div className="card flex flex-col gap-3 min-w-[240px] max-w-[280px] hover:shadow-md transition-shadow">
@@ -77,15 +78,22 @@ export function DealCard({ deal }: Props) {
       )}
 
       {/* Book with Miles button */}
-      <a
-        href={bookingUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-auto block text-center text-xs font-semibold text-white rounded-lg py-2 px-3 transition-opacity hover:opacity-90"
-        style={{ backgroundColor: bgColor }}
-      >
-        Book with Miles →
-      </a>
+      <div className="mt-auto">
+        {bookingDate && (
+          <p className="text-center text-[10px] text-gray-400 mb-1">
+            Pre-selecting {formatBookingDate(bookingDate)}
+          </p>
+        )}
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-center text-xs font-semibold text-white rounded-lg py-2 px-3 transition-opacity hover:opacity-90"
+          style={{ backgroundColor: bgColor }}
+        >
+          {bookingDate ? 'Book with Miles →' : 'View Redemption Page →'}
+        </a>
+      </div>
     </div>
   )
 }

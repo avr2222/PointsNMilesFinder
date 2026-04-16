@@ -1,9 +1,10 @@
+import type React from 'react'
 import type { Deal } from '../../types'
 import { RatingBadge } from '../shared/RatingBadge'
 import { useCurrency } from '../../hooks/useCurrency'
 import { formatPoints } from '../../utils/formatters'
 import { useDealsStore } from '../../store/dealsStore'
-import { buildBookingUrl } from '../../utils/bookingUrls'
+import { buildBookingUrl, getEffectiveBookingDate, formatBookingDate } from '../../utils/bookingUrls'
 
 interface Props {
   deal: Deal
@@ -13,8 +14,9 @@ export function DealRow({ deal }: Props) {
   const { format, formatVpp } = useCurrency()
   const partners = useDealsStore((s) => s.partners)
   const partner  = partners.find((p) => p.id === deal.partner_id)
-  const bgColor  = partner?.logo_color ?? '#6b7280'
+  const bgColor    = partner?.logo_color ?? '#6b7280'
   const bookingUrl = buildBookingUrl(deal, partner)
+  const bookingDate = getEffectiveBookingDate(deal)
 
   return (
     <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors group">
@@ -90,11 +92,14 @@ export function DealRow({ deal }: Props) {
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-[11px] font-semibold text-white rounded-md px-2.5 py-1.5 transition-opacity hover:opacity-90 whitespace-nowrap"
+          className="inline-flex flex-col items-center text-[11px] font-semibold text-white rounded-md px-2.5 py-1.5 transition-opacity hover:opacity-90 whitespace-nowrap"
           style={{ backgroundColor: bgColor }}
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e: React.MouseEvent) => e.stopPropagation()}
         >
-          Book →
+          {bookingDate ? 'Book →' : 'Redeem →'}
+          {bookingDate && (
+            <span className="text-[9px] font-normal opacity-80">{formatBookingDate(bookingDate)}</span>
+          )}
         </a>
       </td>
     </tr>
