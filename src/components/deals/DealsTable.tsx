@@ -24,7 +24,8 @@ export function DealsTable({ deals }: Props) {
     { key: 'points_required' as SortKey, label: 'Amex Pts',    cls: 'px-3 text-right' },
     { key: 'value_per_point' as SortKey, label: 'Est. Value',  cls: 'px-3 text-right hidden sm:table-cell', skip: true },
     { key: 'value_per_point' as SortKey, label: '₹/pt',        cls: 'px-3 text-right' },
-    { key: 'rating'          as SortKey, label: 'Rating',      cls: 'pl-3 pr-4 text-right' },
+    { key: 'rating'          as SortKey, label: 'Rating',      cls: 'pl-3 pr-2 text-right' },
+    { key: 'rating'          as SortKey, label: 'Book',        cls: 'pl-2 pr-4 text-right', skip: true },
   ]
 
   return (
