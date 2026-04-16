@@ -165,7 +165,7 @@ export function buildBookingUrl(deal: Deal, partner: Partner | undefined): strin
           lengthOfStay: String(nights),
           redeemPts:    'true',
         })
-        return `https://www.hilton.com/en/search/find-hotels/?${params}`
+        return `https://www.hilton.com/en/book/reservation/find/?${params}`
       }
 
       default:

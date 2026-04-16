@@ -44,7 +44,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "24-48h",
       "program_url": "https://www.airindia.com/in/en/flying-returns.html",
-      "redemption_url": "https://www.airindia.com/in/en/flying-returns/redeem-miles.html",
+      "redemption_url": "https://www.airindia.com/in/en/flying-returns.html",
       "typical_sweet_spots": [
         "DEL→LHR economy (~35,000 miles)",
         "DEL→LHR business (~70,000 miles)",
@@ -61,7 +61,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
       "program_url": "https://www.emirates.com/english/skywards/",
-      "redemption_url": "https://www.emirates.com/english/skywards/redeeming/flights/",
+      "redemption_url": "https://www.emirates.com/english/skywards/spend-miles/",
       "typical_sweet_spots": [
         "BLR→LHR business (~72,000 miles)",
         "BLR→LHR First Class (~106,000 miles)",
@@ -78,7 +78,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
       "program_url": "https://www.etihad.com/en-us/etihad-guest",
-      "redemption_url": "https://www.etihad.com/en-us/fly-etihad/redeem-miles",
+      "redemption_url": "https://www.etihad.com/en-us/book/",
       "typical_sweet_spots": [
         "BLR→LHR First Suite (~90,000 miles)",
         "BLR→LHR business (~65,000 miles)",
@@ -95,7 +95,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
       "program_url": "https://www.cathaypacific.com/cx/en_HK/asia-miles.html",
-      "redemption_url": "https://www.cathaypacific.com/cx/en_HK/asia-miles/use-miles/flights.html",
+      "redemption_url": "https://www.cathaypacific.com/cx/en_HK/asia-miles/use-miles.html",
       "typical_sweet_spots": [
         "HKG→LHR business (~75,000 miles)",
         "HKG→SYD business (~50,000 miles)",
@@ -112,7 +112,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
       "program_url": "https://www.delta.com/us/en/skymiles/overview",
-      "redemption_url": "https://www.delta.com/us/en/skymiles/redeem-miles",
+      "redemption_url": "https://www.delta.com/us/en/skymiles/overview",
       "typical_sweet_spots": [
         "ATL→LHR business (~75,000 miles)",
         "JFK→CDG business (~70,000 miles)",
