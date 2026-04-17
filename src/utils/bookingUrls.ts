@@ -41,9 +41,6 @@ function addNights(isoDate: string, nights: number): string {
   return d.toISOString().slice(0, 10)
 }
 
-function toCompact(iso: string): string {
-  return iso.replace(/-/g, '')
-}
 
 function toMMDDYYYY(iso: string): string {
   const [y, m, d] = iso.split('-')
@@ -84,15 +81,8 @@ export function buildBookingUrl(deal: Deal, partner: Partner | undefined): strin
 
     switch (deal.partner_id) {
       case 'krisflyer': {
-        const c = CABIN.krisflyer[cabin] ?? 'Y'
-        return (
-          'https://www.singaporeair.com/en_UK/us/book-a-flight/book-flight-form/?' +
-          new URLSearchParams({
-            tripType: 'O', origin, destination,
-            departureDate: toCompact(date),
-            cabinClass: c, noOfPax: '1', type: 'pointspay',
-          })
-        )
+        // SIA uses a JS SPA — query params are ignored; send to the redeem-miles landing page
+        return 'https://www.singaporeair.com/en_UK/us/ppsclub-krisflyer/use-miles/redeem-miles/'
       }
 
       case 'ba-avios': {
