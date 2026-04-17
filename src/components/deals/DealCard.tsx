@@ -2,6 +2,7 @@ import type { Deal } from '../../types'
 import { RatingBadge } from '../shared/RatingBadge'
 import { useCurrency } from '../../hooks/useCurrency'
 import { formatPoints } from '../../utils/formatters'
+import { buildBookingUrl, formatTravelDate } from '../../utils/bookingUrls'
 import { useDealsStore } from '../../store/dealsStore'
 
 interface Props {
@@ -15,8 +16,17 @@ export function DealCard({ deal }: Props) {
 
   const bgColor = partner?.logo_color ?? '#6b7280'
 
+  function handleClick() {
+    if (!partner) return
+    window.open(buildBookingUrl(deal, partner), '_blank', 'noopener,noreferrer')
+  }
+
   return (
-    <div className="card flex flex-col gap-3 min-w-[240px] max-w-[280px] hover:shadow-md transition-shadow">
+    <div
+      className="card flex flex-col gap-3 min-w-[240px] max-w-[280px] hover:shadow-md transition-shadow cursor-pointer"
+      onClick={handleClick}
+      title={`Book on ${deal.partner_name}`}
+    >
       {/* Partner header */}
       <div className="flex items-center gap-2">
         <div
@@ -43,6 +53,11 @@ export function DealCard({ deal }: Props) {
         {deal.nights && (
           <p className="text-xs text-gray-500">{deal.nights} nights · {deal.hotel_category}</p>
         )}
+        {deal.valid_travel_window && (
+          <p className="text-[11px] font-semibold text-indigo-600 mt-0.5">
+            {formatTravelDate(deal.valid_travel_window)}
+          </p>
+        )}
       </div>
 
       {/* Key stats */}
@@ -67,6 +82,11 @@ export function DealCard({ deal }: Props) {
           🎁 +{deal.transfer_bonus_percent}% Transfer Bonus Active!
         </div>
       )}
+
+      {/* Book CTA */}
+      <div className="text-center text-[11px] font-semibold text-indigo-600 bg-indigo-50 rounded-md py-1">
+        Tap to Book →
+      </div>
     </div>
   )
 }
