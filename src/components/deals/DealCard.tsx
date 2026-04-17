@@ -2,8 +2,8 @@ import type { Deal } from '../../types'
 import { RatingBadge } from '../shared/RatingBadge'
 import { useCurrency } from '../../hooks/useCurrency'
 import { formatPoints } from '../../utils/formatters'
+import { buildBookingUrl, formatTravelDate } from '../../utils/bookingUrls'
 import { useDealsStore } from '../../store/dealsStore'
-import { buildBookingUrl } from '../../utils/bookingUrls'
 
 interface Props {
   deal: Deal
@@ -18,7 +18,13 @@ export function DealCard({ deal }: Props) {
   const bookingUrl = buildBookingUrl(deal, partner)
 
   return (
-    <div className="card flex flex-col gap-3 min-w-[240px] max-w-[280px] hover:shadow-md transition-shadow">
+    <a
+      href={bookingUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="card flex flex-col gap-3 min-w-[240px] max-w-[280px] hover:shadow-md transition-shadow no-underline"
+      style={{ textDecoration: 'none', color: 'inherit' }}
+    >
       {/* Partner header */}
       <div className="flex items-center gap-2">
         <div
@@ -45,10 +51,9 @@ export function DealCard({ deal }: Props) {
         {deal.nights && (
           <p className="text-xs text-gray-500">{deal.nights} nights · {deal.hotel_category}</p>
         )}
-        {/* Travel window */}
         {deal.valid_travel_window && (
-          <p className="text-[11px] text-indigo-600 font-medium mt-0.5">
-            📅 {deal.valid_travel_window}
+          <p className="text-[11px] font-semibold text-indigo-600 mt-0.5">
+            {formatTravelDate(deal.valid_travel_window)}
           </p>
         )}
       </div>
@@ -76,16 +81,13 @@ export function DealCard({ deal }: Props) {
         </div>
       )}
 
-      {/* Book with Miles button */}
-      <a
-        href={bookingUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-auto block text-center text-xs font-semibold text-white rounded-lg py-2 px-3 transition-opacity hover:opacity-90"
+      {/* Book CTA */}
+      <div
+        className="mt-auto text-center text-xs font-semibold text-white rounded-lg py-2 px-3 transition-opacity hover:opacity-90"
         style={{ backgroundColor: bgColor }}
       >
         Book with Miles →
-      </a>
-    </div>
+      </div>
+    </a>
   )
 }

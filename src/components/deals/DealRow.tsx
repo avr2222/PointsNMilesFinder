@@ -2,8 +2,8 @@ import type { Deal } from '../../types'
 import { RatingBadge } from '../shared/RatingBadge'
 import { useCurrency } from '../../hooks/useCurrency'
 import { formatPoints } from '../../utils/formatters'
+import { buildBookingUrl, formatTravelDate } from '../../utils/bookingUrls'
 import { useDealsStore } from '../../store/dealsStore'
-import { buildBookingUrl } from '../../utils/bookingUrls'
 
 interface Props {
   deal: Deal
@@ -16,8 +16,21 @@ export function DealRow({ deal }: Props) {
   const bgColor  = partner?.logo_color ?? '#6b7280'
   const bookingUrl = buildBookingUrl(deal, partner)
 
+  function handleRowClick(e: React.MouseEvent<HTMLTableRowElement>) {
+    if ((e.target as HTMLElement).closest('a')) return
+    if (bookingUrl === '#') return
+    const anchor = document.createElement('a')
+    anchor.href = bookingUrl
+    anchor.target = '_blank'
+    anchor.rel = 'noopener noreferrer'
+    anchor.click()
+  }
+
   return (
-    <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors group">
+    <tr
+      className="border-b border-gray-50 hover:bg-indigo-50 transition-colors group cursor-pointer"
+      onClick={handleRowClick}
+    >
       {/* Partner */}
       <td className="py-3 pl-4 pr-3">
         <div className="flex items-center gap-2.5">
@@ -41,8 +54,8 @@ export function DealRow({ deal }: Props) {
           {deal.cabin_class ?? (deal.nights ? `${deal.nights} nights · ${deal.hotel_category ?? ''}` : '')}
         </p>
         {deal.valid_travel_window && (
-          <p className="text-[10px] text-indigo-600 font-medium mt-0.5">
-            📅 {deal.valid_travel_window}
+          <p className="text-[10px] font-semibold text-indigo-600 mt-0.5">
+            {formatTravelDate(deal.valid_travel_window)}
           </p>
         )}
       </td>
