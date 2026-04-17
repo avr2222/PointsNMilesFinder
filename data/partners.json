@@ -9,8 +9,8 @@
       "logo_color": "#0033A0",
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
-      "program_url": "https://www.singaporeair.com/en_UK/us/ppsclub-krisflyer/krisflyer/",
-      "redemption_url": "https://www.singaporeair.com/en_UK/us/plan-travel/redeem-krisflyer-miles/",
+      "program_url": "https://www.singaporeair.com/en_UK/sg/ppsclub-krisflyer/krisflyer/",
+      "redemption_url": "https://www.singaporeair.com/en_UK/sg/plan-travel/upgrade-redeem/book-saver/",
       "typical_sweet_spots": [
         "BLR→SIN economy (~17,500 miles)",
         "SIN→LHR business (~87,500 miles)",
@@ -27,7 +27,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
       "program_url": "https://www.britishairways.com/en-gb/executive-club",
-      "redemption_url": "https://www.britishairways.com/en-gb/flights/avios-redemption",
+      "redemption_url": "https://www.britishairways.com/travel/flightfinderhome/public/en_gb",
       "typical_sweet_spots": [
         "LHR→CDG business (~7,500 Avios)",
         "BLR→DXB economy (~9,750 Avios)",
@@ -44,7 +44,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "24-48h",
       "program_url": "https://www.airindia.com/in/en/flying-returns.html",
-      "redemption_url": "https://www.airindia.com/in/en/flying-returns/redeem-miles.html",
+      "redemption_url": "https://book.airindia.com/",
       "typical_sweet_spots": [
         "DEL→LHR economy (~35,000 miles)",
         "DEL→LHR business (~70,000 miles)",
@@ -60,8 +60,8 @@
       "logo_color": "#C60C30",
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
-      "program_url": "https://www.emirates.com/english/skywards/",
-      "redemption_url": "https://www.emirates.com/english/skywards/redeeming/flights/",
+      "program_url": "https://www.emirates.com/us/english/skywards/",
+      "redemption_url": "https://www.emirates.com/us/english/book/flights/",
       "typical_sweet_spots": [
         "BLR→LHR business (~72,000 miles)",
         "BLR→LHR First Class (~106,000 miles)",
@@ -77,8 +77,8 @@
       "logo_color": "#B8962E",
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
-      "program_url": "https://www.etihad.com/en-us/etihad-guest",
-      "redemption_url": "https://www.etihad.com/en-us/fly-etihad/redeem-miles",
+      "program_url": "https://www.etihad.com/en-us/etihadguest",
+      "redemption_url": "https://www.etihad.com/en-us/etihadguest/spend-miles/fly-with-miles",
       "typical_sweet_spots": [
         "BLR→LHR First Suite (~90,000 miles)",
         "BLR→LHR business (~65,000 miles)",
@@ -95,7 +95,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
       "program_url": "https://www.cathaypacific.com/cx/en_HK/asia-miles.html",
-      "redemption_url": "https://www.cathaypacific.com/cx/en_HK/asia-miles/use-miles/flights.html",
+      "redemption_url": "https://book.cathaypacific.com/",
       "typical_sweet_spots": [
         "HKG→LHR business (~75,000 miles)",
         "HKG→SYD business (~50,000 miles)",
@@ -112,7 +112,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
       "program_url": "https://www.delta.com/us/en/skymiles/overview",
-      "redemption_url": "https://www.delta.com/us/en/skymiles/redeem-miles",
+      "redemption_url": "https://www.delta.com/flightsearch/search",
       "typical_sweet_spots": [
         "ATL→LHR business (~75,000 miles)",
         "JFK→CDG business (~70,000 miles)",
@@ -128,8 +128,8 @@
       "logo_color": "#0036A1",
       "amex_transfer_ratio": "1:1",
       "transfer_time": "instant",
-      "program_url": "https://flyingblue.com",
-      "redemption_url": "https://flyingblue.com/redeem-miles",
+      "program_url": "https://www.flyingblue.com",
+      "redemption_url": "https://www.flyingblue.com/en/flights/reward-tickets",
       "typical_sweet_spots": [
         "CDG→JFK business (~50,000 miles)",
         "CDG→NRT business (~60,000 miles)",
@@ -146,7 +146,7 @@
       "amex_transfer_ratio": "1:1",
       "transfer_time": "3-5d",
       "program_url": "https://www.marriott.com/loyalty.mi",
-      "redemption_url": "https://www.marriott.com/redeem/redeem-points.mi",
+      "redemption_url": "https://www.marriott.com/loyalty/redeem/hotels.mi",
       "typical_sweet_spots": [
         "Maldives resorts (5th night free)",
         "W Bali 3 nights (~120,000 pts)",
@@ -163,7 +163,7 @@
       "amex_transfer_ratio": "1:2",
       "transfer_time": "instant",
       "program_url": "https://www.hilton.com/en/hilton-honors/",
-      "redemption_url": "https://www.hilton.com/en/hilton-honors/points/redeem/",
+      "redemption_url": "https://www.hilton.com/en/hotels/",
       "typical_sweet_spots": [
         "Waldorf Astoria Maldives (5th night free)",
         "Conrad Singapore 2 nights (~80,000 pts)",
