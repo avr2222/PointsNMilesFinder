@@ -14,18 +14,16 @@ export function DealCard({ deal }: Props) {
   const partners = useDealsStore((s) => s.partners)
   const partner  = partners.find((p) => p.id === deal.partner_id)
 
-  const bgColor = partner?.logo_color ?? '#6b7280'
-
-  function handleClick() {
-    if (!partner) return
-    window.open(buildBookingUrl(deal, partner), '_blank', 'noopener,noreferrer')
-  }
+  const bgColor    = partner?.logo_color ?? '#6b7280'
+  const bookingUrl = partner ? buildBookingUrl(deal, partner) : '#'
 
   return (
-    <div
-      className="card flex flex-col gap-3 min-w-[240px] max-w-[280px] hover:shadow-md transition-shadow cursor-pointer"
-      onClick={handleClick}
-      title={`Book on ${deal.partner_name}`}
+    <a
+      href={bookingUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="card flex flex-col gap-3 min-w-[240px] max-w-[280px] hover:shadow-md transition-shadow no-underline"
+      style={{ textDecoration: 'none', color: 'inherit' }}
     >
       {/* Partner header */}
       <div className="flex items-center gap-2">
@@ -85,8 +83,8 @@ export function DealCard({ deal }: Props) {
 
       {/* Book CTA */}
       <div className="text-center text-[11px] font-semibold text-indigo-600 bg-indigo-50 rounded-md py-1">
-        Tap to Book →
+        Book →
       </div>
-    </div>
+    </a>
   )
 }

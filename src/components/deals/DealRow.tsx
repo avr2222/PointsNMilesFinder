@@ -14,17 +14,24 @@ export function DealRow({ deal }: Props) {
   const partners = useDealsStore((s) => s.partners)
   const partner  = partners.find((p) => p.id === deal.partner_id)
   const bgColor  = partner?.logo_color ?? '#6b7280'
+  const bookingUrl = partner ? buildBookingUrl(deal, partner) : '#'
 
-  function handleClick() {
-    if (!partner) return
-    window.open(buildBookingUrl(deal, partner), '_blank', 'noopener,noreferrer')
+  function handleRowClick(e: React.MouseEvent<HTMLTableRowElement>) {
+    // Let native <a> clicks handle themselves
+    if ((e.target as HTMLElement).closest('a')) return
+    if (bookingUrl === '#') return
+    // Programmatic anchor click — reliable across all browsers, not blocked as popup
+    const anchor = document.createElement('a')
+    anchor.href = bookingUrl
+    anchor.target = '_blank'
+    anchor.rel = 'noopener noreferrer'
+    anchor.click()
   }
 
   return (
     <tr
       className="border-b border-gray-50 hover:bg-indigo-50 transition-colors group cursor-pointer"
-      onClick={handleClick}
-      title={`Book on ${deal.partner_name}`}
+      onClick={handleRowClick}
     >
       {/* Partner */}
       <td className="py-3 pl-4 pr-3">
@@ -80,7 +87,7 @@ export function DealRow({ deal }: Props) {
         </span>
       </td>
 
-      {/* Rating */}
+      {/* Rating + Book link */}
       <td className="py-3 pl-3 pr-4">
         <div className="flex items-center justify-end gap-1">
           <RatingBadge rating={deal.rating} size="sm" />
@@ -90,9 +97,15 @@ export function DealRow({ deal }: Props) {
             </span>
           )}
         </div>
-        <p className="text-[10px] text-indigo-500 text-right mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="block text-[10px] font-semibold text-indigo-500 text-right mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity hover:text-indigo-700"
+        >
           Book →
-        </p>
+        </a>
       </td>
     </tr>
   )
