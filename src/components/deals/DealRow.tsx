@@ -14,13 +14,11 @@ export function DealRow({ deal }: Props) {
   const partners = useDealsStore((s) => s.partners)
   const partner  = partners.find((p) => p.id === deal.partner_id)
   const bgColor  = partner?.logo_color ?? '#6b7280'
-  const bookingUrl = partner ? buildBookingUrl(deal, partner) : '#'
+  const bookingUrl = buildBookingUrl(deal, partner)
 
   function handleRowClick(e: React.MouseEvent<HTMLTableRowElement>) {
-    // Let native <a> clicks handle themselves
     if ((e.target as HTMLElement).closest('a')) return
     if (bookingUrl === '#') return
-    // Programmatic anchor click — reliable across all browsers, not blocked as popup
     const anchor = document.createElement('a')
     anchor.href = bookingUrl
     anchor.target = '_blank'
@@ -87,8 +85,8 @@ export function DealRow({ deal }: Props) {
         </span>
       </td>
 
-      {/* Rating + Book link */}
-      <td className="py-3 pl-3 pr-4">
+      {/* Rating */}
+      <td className="py-3 pl-3 pr-2">
         <div className="flex items-center justify-end gap-1">
           <RatingBadge rating={deal.rating} size="sm" />
           {deal.transfer_bonus_active && (
@@ -97,12 +95,17 @@ export function DealRow({ deal }: Props) {
             </span>
           )}
         </div>
+      </td>
+
+      {/* Book */}
+      <td className="py-3 pl-2 pr-4">
         <a
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-[11px] font-semibold text-white rounded-md px-2.5 py-1.5 transition-opacity hover:opacity-90 whitespace-nowrap"
+          style={{ backgroundColor: bgColor }}
           onClick={(e) => e.stopPropagation()}
-          className="block text-[10px] font-semibold text-indigo-500 text-right mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity hover:text-indigo-700"
         >
           Book →
         </a>

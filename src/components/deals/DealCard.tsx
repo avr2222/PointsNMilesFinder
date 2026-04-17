@@ -15,7 +15,7 @@ export function DealCard({ deal }: Props) {
   const partner  = partners.find((p) => p.id === deal.partner_id)
 
   const bgColor    = partner?.logo_color ?? '#6b7280'
-  const bookingUrl = partner ? buildBookingUrl(deal, partner) : '#'
+  const bookingUrl = buildBookingUrl(deal, partner)
 
   return (
     <a
@@ -82,8 +82,11 @@ export function DealCard({ deal }: Props) {
       )}
 
       {/* Book CTA */}
-      <div className="text-center text-[11px] font-semibold text-indigo-600 bg-indigo-50 rounded-md py-1">
-        Book →
+      <div
+        className="mt-auto text-center text-xs font-semibold text-white rounded-lg py-2 px-3 transition-opacity hover:opacity-90"
+        style={{ backgroundColor: bgColor }}
+      >
+        Book with Miles →
       </div>
     </a>
   )
