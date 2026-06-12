@@ -49,7 +49,9 @@ export function DealCard({ deal }: Props) {
           <p className="text-xs text-gray-500 capitalize">{deal.cabin_class}</p>
         )}
         {deal.nights && (
-          <p className="text-xs text-gray-500">{deal.nights} nights · {deal.hotel_category}</p>
+          <p className="text-xs text-gray-500">
+            {deal.nights} nights{deal.hotel_category ? ` · ${deal.hotel_category}` : ''}
+          </p>
         )}
         {deal.valid_travel_window && (
           <p className="text-[11px] font-semibold text-indigo-600 mt-0.5">

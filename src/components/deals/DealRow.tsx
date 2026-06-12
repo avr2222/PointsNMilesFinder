@@ -51,7 +51,7 @@ export function DealRow({ deal }: Props) {
       <td className="py-3 px-3">
         <p className="text-sm font-semibold text-gray-900">{deal.route_label}</p>
         <p className="text-xs text-gray-500 capitalize">
-          {deal.cabin_class ?? (deal.nights ? `${deal.nights} nights · ${deal.hotel_category ?? ''}` : '')}
+          {deal.cabin_class ?? (deal.nights ? `${deal.nights} nights${deal.hotel_category ? ` · ${deal.hotel_category}` : ''}` : '')}
         </p>
         {deal.valid_travel_window && (
           <p className="text-[10px] font-semibold text-indigo-600 mt-0.5">

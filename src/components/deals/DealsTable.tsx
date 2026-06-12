@@ -12,20 +12,24 @@ function SortIcon({ active, dir }: { active: boolean; dir: 'asc' | 'desc' }) {
   return <span className="text-brand-600 ml-1">{dir === 'asc' ? '↑' : '↓'}</span>
 }
 
+type ColDef =
+  | { key: SortKey; label: string; cls: string; skip?: false }
+  | { key: null;    label: string; cls: string; skip: true  }
+
 export function DealsTable({ deals }: Props) {
   const { sort, setSort, resetFilters } = useFilters()
 
   if (deals.length === 0) return <EmptyState onReset={resetFilters} />
 
-  const uniqueCols = [
-    { key: 'partner_name'   as SortKey, label: 'Partner',      cls: 'pl-4 pr-3 text-left' },
-    { key: 'partner_name'   as SortKey, label: 'Route / Hotel', cls: 'px-3 text-left', skip: true },
-    { key: 'value_per_point' as SortKey, label: 'Region',      cls: 'px-3 text-left hidden md:table-cell', skip: true },
-    { key: 'points_required' as SortKey, label: 'Amex Pts',    cls: 'px-3 text-right' },
-    { key: 'value_per_point' as SortKey, label: 'Est. Value',  cls: 'px-3 text-right hidden sm:table-cell', skip: true },
-    { key: 'value_per_point' as SortKey, label: '₹/pt',        cls: 'px-3 text-right' },
-    { key: 'rating'          as SortKey, label: 'Rating',      cls: 'pl-3 pr-2 text-right' },
-    { key: 'rating'          as SortKey, label: 'Book',        cls: 'pl-2 pr-4 text-right', skip: true },
+  const cols: ColDef[] = [
+    { key: 'partner_name',    label: 'Partner',      cls: 'pl-4 pr-3 text-left'                        },
+    { key: null,              label: 'Route / Hotel', cls: 'px-3 text-left',              skip: true  },
+    { key: null,              label: 'Region',        cls: 'px-3 text-left hidden md:table-cell', skip: true },
+    { key: 'points_required', label: 'Amex Pts',     cls: 'px-3 text-right'                           },
+    { key: null,              label: 'Est. Value',    cls: 'px-3 text-right hidden sm:table-cell', skip: true },
+    { key: 'value_per_point', label: '₹/pt',         cls: 'px-3 text-right'                           },
+    { key: 'rating',          label: 'Rating',       cls: 'pl-3 pr-2 text-right'                      },
+    { key: null,              label: 'Book',          cls: 'pl-2 pr-4 text-right',         skip: true  },
   ]
 
   return (
@@ -33,7 +37,7 @@ export function DealsTable({ deals }: Props) {
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-gray-100 bg-gray-50">
-            {uniqueCols.map((col, i) => (
+            {cols.map((col, i) => (
               <th
                 key={i}
                 className={`py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide ${col.cls} ${col.skip ? '' : 'cursor-pointer select-none hover:text-gray-800'}`}

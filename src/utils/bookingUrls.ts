@@ -80,6 +80,7 @@ export function buildBookingUrl(deal: Deal, partner: Partner | undefined): strin
 
   // ── Flight deals ─────────────────────────────────────────────────────────
   if (deal.category === 'flight') {
+    if (!origin || !destination) return fallback
     const date = travelDate ?? defaultTravelDate()
 
     switch (deal.partner_id) {
